@@ -1,13 +1,64 @@
+@font-face {
+  font-family: "Mulish";
+  src: local("Mulish"), url(./fonts/Mulish-Regular.ttf) format("truetype");
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Mulish, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.errorMsg {
+  color: red;
+  font-weight: bold;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  background: #6c77b4;
+}
+
+.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.loader {
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader-inner {
+  width: 100%;
+  height: 100%;
+  border: 1rem solid #162534;
+  border-radius: 50%;
+  border-bottom-color: #0099ff;
+  border-top-color: #0099ff;
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: scale(1) rotate(360deg);
+  }
+  50% {
+    transform: scale(0.5) rotate(-360deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
 }
