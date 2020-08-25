@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import PermanentDrawerLeft from "./components/PermanentDrawerLeft";
@@ -17,7 +17,6 @@ function App() {
     setDefaultLists,
     pending,
   } = useContext(MainContext);
-
   const { user } = useContext(AuthContext);
 
   return (
@@ -27,7 +26,7 @@ function App() {
           <>
             <PermanentDrawerLeft />
             <Route exact path="/">
-              <Content list={{}} />
+              <Content list={{}} showInput={false} />
             </Route>
             {defaultLists.map((lst) => (
               <Route
@@ -35,7 +34,7 @@ function App() {
                 path={`/${slugify(lst.listName).toLowerCase()}`}
                 key={lst.listName}
               >
-                <Content list={lst} />
+                <Content list={lst} showInput={true} />
               </Route>
             ))}
 
@@ -45,7 +44,7 @@ function App() {
                 // path={lst.id}
                 key={lst.listName}
               >
-                <Content list={lst} />
+                <Content list={lst} showInput={true} />
               </Route>
             ))}
           </>

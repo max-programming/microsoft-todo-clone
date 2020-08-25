@@ -6,13 +6,16 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { MainProvider } from "./context/MainContext";
 import { AuthState } from "./context/AuthContext";
+import { DataProvider } from "./context/DataContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <MainProvider>
-      <AuthState>
-        <App />
-      </AuthState>
+      <DataProvider>
+        <AuthState>
+          <App />
+        </AuthState>
+      </DataProvider>
     </MainProvider>
   </React.StrictMode>,
   document.getElementById("root")

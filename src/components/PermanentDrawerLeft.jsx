@@ -25,6 +25,7 @@ import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
 import "../App.css";
 import { MainContext } from "../context/MainContext";
 import { DefaultList, CreatedList } from "./Lists/TodoLists";
+import { fire, db } from "../fire";
 
 const drawerWidth = 240;
 
@@ -62,12 +63,11 @@ export default function PermanentDrawerLeft() {
       return;
     } else {
       const newList = {
-        id: "l3",
         listName: newListName,
-        todos: [],
       };
-      setLists([...lists, newList]);
+      // setLists([...lists, newList]);
       setShowInput(false);
+      db.collection("lists").add(newList);
     }
   };
 
@@ -106,29 +106,28 @@ export default function PermanentDrawerLeft() {
           {showInput ? (
             <Container>
               <form className="addList" onSubmit={addList}>
-                <FormControl>
-                  <TextField
-                    label="Add a List"
-                    style={{ fontSize: "1.3rem" }}
-                    value={newListName}
-                    onChange={(e) => setNewListName(e.target.value)}
-                    autoFocus
-                    fullWidth
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <AddOutlinedIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
+                <TextField
+                  label="Add a List"
+                  style={{ fontSize: "1.3rem" }}
+                  value={newListName}
+                  onChange={(e) => setNewListName(e.target.value)}
+                  autoFocus
+                  fullWidth
+                  required
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AddOutlinedIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
               </form>
             </Container>
           ) : (
             <ListItem
               onClick={() => setShowInput(true)}
-              style={{ cursor: "default" }}
+              style={{ cursor: "text" }}
               button
             >
               <ListItemIcon>

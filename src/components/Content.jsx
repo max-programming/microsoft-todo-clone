@@ -15,24 +15,28 @@ import { MainContext } from "../context/MainContext";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AddIcon from "@material-ui/icons/Add";
 import "../index.css";
+import { fire, db } from "../fire";
+
 // import PropTypes, { string } from "prop-types";
 
-const Content = ({ list }) => {
-  const [todoName, setTodoName] = useState("");
+const Content = ({ list, showInput }) => {
   const [lstName] = useState(list.listName);
+  const [todoName, setTodoName] = useState("");
+
   const { todos, setTodos } = useContext(MainContext);
   const { handleLogout } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
-      id: 1,
       name: todoName,
       checked: false,
       important: false,
       listIds: [list.id],
     };
+    db.collection("todos").add(newTodo);
+
     setTodoName("");
-    setTodos([newTodo, ...todos]);
+    // setTodos([newTodo, ...todos]);
   };
   return (
     // Try adding ID for each list
@@ -59,23 +63,27 @@ const Content = ({ list }) => {
         </Toolbar>
       </AppBar>
       <Container maxWidth="md">
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="Add a Todo"
-            variant="outlined"
-            fullWidth
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AddIcon opacity="0.6" />
-                </InputAdornment>
-              ),
-            }}
-            style={{ marginBottom: 10 }}
-            value={todoName}
-            onChange={(e) => setTodoName(e.target.value)}
-          />
-        </form>
+        {showInput && (
+          <form onSubmit={handleSubmit}>
+            <TextField
+              label="Add a Todo"
+              variant="outlined"
+              fullWidth
+              required
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AddIcon opacity="0.6" />
+                  </InputAdornment>
+                ),
+              }}
+              style={{ marginBottom: 10 }}
+              value={todoName}
+              onChange={(e) => setTodoName(e.target.value)}
+            />
+          </form>
+        )}
+
         {todos &&
           todos.map((todo) => <Todo todo={todo} key={todo.id} list={list} />)}
         {/* <FormControl
