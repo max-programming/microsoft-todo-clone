@@ -9,15 +9,13 @@ import { AuthState } from "./context/AuthContext";
 import { DataProvider } from "./context/DataContext";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <MainProvider>
-      <DataProvider>
-        <AuthState>
-          <App />
-        </AuthState>
-      </DataProvider>
-    </MainProvider>
-  </React.StrictMode>,
+  <MainProvider>
+    <DataProvider>
+      <AuthState>
+        <App />
+      </AuthState>
+    </DataProvider>
+  </MainProvider>,
   document.getElementById("root")
 );
 
