@@ -72,9 +72,9 @@ export const DataProvider = ({ children }) => {
           }));
           setTodos(todosArr);
         });
-      getLists();
-      getTodos();
     };
+    getLists();
+    getTodos();
   }, [setLists, setTodos]);
   return <DataContext.Provider value={{}}>{children}</DataContext.Provider>;
 };

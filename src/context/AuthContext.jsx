@@ -40,6 +40,8 @@ export const AuthState = ({ children }) => {
           case "auth/weak-password":
             setPasswordError(err.message);
             break;
+          default:
+            return;
         }
       });
   };
@@ -58,6 +60,8 @@ export const AuthState = ({ children }) => {
           case "auth/wrong-password":
             setPasswordError(err.message);
             break;
+          default:
+            return;
         }
       });
   };
