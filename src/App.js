@@ -48,8 +48,6 @@ function App() {
               </Route>
             ))}
           </>
-        ) : pending ? (
-          <Loader />
         ) : (
           <Login />
         )}

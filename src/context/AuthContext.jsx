@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
-import { MainContext } from "./MainContext";
-import { fire, db } from "../fire";
+import React, { useState, useEffect, createContext } from "react";
+import { fire } from "../fire";
 
 export const AuthContext = createContext();
 
@@ -13,8 +12,6 @@ export const AuthState = ({ children }) => {
   const [hasAccount, setHasAccount] = useState(true);
   const [pending, setPending] = useState(true);
 
-  const { setLists, setTodos } = useContext(MainContext);
-
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -26,35 +23,9 @@ export const AuthState = ({ children }) => {
       }
     });
   };
-  const getLists = () => {
-    db.collection("lists")
-      .get()
-      .then((snapshot) => {
-        let listsArr = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          listName: doc.get("listName"),
-        }));
-        setLists(listsArr);
-      });
-  };
-  const getTodos = () => {
-    db.collection("todos")
-      .get()
-      .then((snapshot) => {
-        let todosArr = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          name: doc.get("name"),
-          checked: doc.get("checked"),
-          important: doc.get("important"),
-          listIds: doc.get("listIds"),
-        }));
-        setTodos(todosArr);
-      });
-  };
+
   useEffect(() => {
     authListener();
-    getLists();
-    getTodos();
   }, []);
   const handleSignup = () => {
     fire
