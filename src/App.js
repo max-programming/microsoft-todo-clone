@@ -19,7 +19,7 @@ function App() {
         {user ? (
           <>
             <PermanentDrawerLeft />
-            <Route exact path="/">
+            {/*  <Route exact path="/">
               <Content list={{}} showInput={false} />
             </Route>
             {defaultLists.map((lst) => (
@@ -40,7 +40,8 @@ function App() {
               >
                 <Content list={lst} showInput={true} />
               </Route>
-            ))}
+            ))} */}
+            <div>Hello World</div>
           </>
         ) : (
           <Login />
