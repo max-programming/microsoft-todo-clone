@@ -6,7 +6,7 @@ import FileCopyTwoToneIcon from "@material-ui/icons/FileCopyTwoTone";
 import DeleteTwoToneIcon from "@material-ui/icons/DeleteTwoTone";
 
 export default function ContextMenu({ handleClose, state, type }) {
-  const [menuItems, setMenuItems] = useState(
+  const [menuItems] = useState(
     type === "normal" && [
       {
         icon: <EditTwoToneIcon />,

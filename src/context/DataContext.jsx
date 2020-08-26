@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useEffect, useContext, createContext } from "react";
 import { MainContext } from "./MainContext";
-import { fire, db } from "../fire";
+import { db } from "../fire";
 
 export const DataContext = createContext();
 

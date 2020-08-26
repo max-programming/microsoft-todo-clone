@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
-import {
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
+import { NavLink } from "react-router-dom";
+import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import FormatListBulletedOutlinedIcon from "@material-ui/icons/FormatListBulletedOutlined";
 import ContextMenu from "../ContextMenu";
 import slugify from "slugify";

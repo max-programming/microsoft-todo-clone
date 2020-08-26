@@ -4,11 +4,9 @@ import {
   Divider,
   Drawer,
   List,
-  Button,
   ListItem,
   ListItemIcon,
   ListItemText,
-  FormControl,
   TextField,
   Container,
   InputAdornment,
@@ -18,14 +16,10 @@ import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 
 // Main Icons
 
-// Context Menu Icons
-import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
-import FileCopyOutlinedIcon from "@material-ui/icons/FileCopyOutlined";
-import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
 import "../App.css";
 import { MainContext } from "../context/MainContext";
 import { DefaultList, CreatedList } from "./Lists/TodoLists";
-import { fire, db } from "../fire";
+import { db } from "../fire";
 
 const drawerWidth = 240;
 

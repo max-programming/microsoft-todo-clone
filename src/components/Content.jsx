@@ -5,7 +5,6 @@ import {
   Typography,
   Container,
   Button,
-  FormControl,
   TextField,
   InputAdornment,
 } from "@material-ui/core";
@@ -15,7 +14,7 @@ import { MainContext } from "../context/MainContext";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AddIcon from "@material-ui/icons/Add";
 import "../index.css";
-import { fire, db } from "../fire";
+import { db } from "../fire";
 
 // import PropTypes, { string } from "prop-types";
 
@@ -23,7 +22,7 @@ const Content = ({ list, showInput }) => {
   const [lstName] = useState(list.listName);
   const [todoName, setTodoName] = useState("");
 
-  const { todos, setTodos } = useContext(MainContext);
+  const { todos } = useContext(MainContext);
   const { handleLogout } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
