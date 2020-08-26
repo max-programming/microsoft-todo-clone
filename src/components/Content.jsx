@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -19,7 +19,6 @@ import { db } from "../fire";
 // import PropTypes, { string } from "prop-types";
 
 const Content = ({ list, showInput }) => {
-  const [lstName] = useState(list.listName);
   const [todoName, setTodoName] = useState("");
 
   const { todos } = useContext(MainContext);
@@ -49,7 +48,7 @@ const Content = ({ list, showInput }) => {
       >
         <Toolbar className="toolbar">
           <Typography variant="h6" noWrap>
-            {lstName ? lstName : "MS Todo Clone"}
+            {list.listName ? list.listName : "MS Todo Clone"}
           </Typography>
           <Button
             variant="contained"
